@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog">
   <defaultcontrol always="true">8</defaultcontrol>
+  <onload condition="System.HasAddon(script.videoextras)">XBMC.RunScript(script.videoextras,check,"$INFO[ListItem.FilenameAndPath]")</onload>
   <coordinates>
     <system>1</system>
     <posx>0</posx>
@@ -487,6 +488,19 @@
           <texturefocus>-</texturefocus>
           <alttexturefocus>-</alttexturefocus>
           <usealttexture>Container.Content(TVShows)</usealttexture>
+        </control>
+        <control type="button" id="105" description="VideoExtras">
+          <height>54</height>
+          <width>230</width>
+          <align>center</align>
+          <font>Details</font>
+          <textcolor>White</textcolor>
+          <focusedcolor>Orange</focusedcolor>
+          <label>Extras</label>
+          <onclick>XBMC.RunScript(script.videoextras,display,"$INFO[ListItem.FilenameAndPath]")</onclick>
+          <visible>System.HasAddon(script.videoextras) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(TVShows)] + IsEmpty(Window(movieinformation).Property("HideVideoExtrasButton"))</visible>
+          <texturefocus>-</texturefocus>
+          <alttexturefocus>-</alttexturefocus>
         </control>
         <control type="button" id="11" description="Trailer">
           <height>54</height>
